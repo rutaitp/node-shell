@@ -20,11 +20,18 @@ function ls() {
     });
 }
 
+function echo(input){
+  process.stdout.write(`${input}`);
+  process.stdout.write('\ntype here > ');
+}
+
 function listenUserInput() {
   let userInput = process.stdout.write('type here > ');
 
     process.stdin.on('data', function (data) {
       var cmd = data.toString().trim(); // remove the newline
+      //split on a space
+      let splitData = cmd.split(" "); //array split by space
 
       if (!cmd){
         return "Enter something!";
@@ -32,6 +39,8 @@ function listenUserInput() {
         ls();
       } else if (cmd === "pwd"){
         pwd();
+      } else if (cmd === "echo"){
+        echo(args);
       }
     });
 }
